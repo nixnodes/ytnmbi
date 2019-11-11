@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "content_scripts": [ {
+        "js":        [ "ytnmbi.js" ],
+        "matches":   [ "*://*.youtube.com/*"],
+        "run_at":    "document_start"
+    } ],
+    "permissions": [ "webNavigation", "*://*.youtube.com/*" ],
+    "converted_from_user_script": true,
+    "description":  "Reduces thumbnail size on youtube homepage",
+    "name":         "YT No More Big Icons",
+    "version":      "0.1"
+}
+
