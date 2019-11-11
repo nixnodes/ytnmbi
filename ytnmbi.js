@@ -1,16 +1,15 @@
 var items_per_row = 8;
 var posts_per_row = 8;
+var target_style = "--ytd-rich-grid-items-per-row:"+items_per_row+"; --ytd-rich-grid-posts-per-row:"+posts_per_row+"; --ytd-rich-grid-movies-per-row:9;";
 
-function ytmo(ipr, ppr)
-{	
-	var target_style = "--ytd-rich-grid-items-per-row:"+ipr+"; --ytd-rich-grid-posts-per-row:"+ppr+"; --ytd-rich-grid-movies-per-row:9;";
+function ytmo(ts)
+{		
 	MutationObserver = window.MutationObserver || window.WebKitMutationObserver; 
 	
-	var oe_lock = false;
 	var oe = new MutationObserver(function(mutations, observer) {
 		var e = mutations[0].target;		
-		if ( e.getAttribute("style") !== target_style) {
-			e.setAttribute("style", target_style);
+		if ( e.getAttribute("style") !== ts) {
+			e.setAttribute("style", ts);
 		}
 	});
 	
@@ -19,7 +18,7 @@ function ytmo(ipr, ppr)
 		if (p) {
 			var t = p.firstChild;
 			if ( t && t.tagName === "YTD-RICH-GRID-RENDERER" ) {
-				t.setAttribute("style", target_style);
+				t.setAttribute("style", ts);
 				op.disconnect();
 				oe.observe(t, { 
 					attributes: true
@@ -34,5 +33,5 @@ function ytmo(ipr, ppr)
 }
 
 if ( window.location.hostname.match(/\.youtube\.com$/)) {
-	ytmo(items_per_row, posts_per_row);
+	ytmo(target_style);
 }
