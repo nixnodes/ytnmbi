@@ -1,10 +1,10 @@
-var items_per_row = 8;
-var posts_per_row = 8;
+var items_per_row = 7;
+var posts_per_row = 7;
 var target_style = "--ytd-rich-grid-items-per-row:"+items_per_row+"; --ytd-rich-grid-posts-per-row:"+posts_per_row+"; --ytd-rich-grid-movies-per-row:9;";
 
 function ytmo(ts)
 {		
-	MutationObserver = window.MutationObserver || window.WebKitMutationObserver; 
+	var MutationObserver = window.MutationObserver || window.WebKitMutationObserver; 
 	
 	var oe = new MutationObserver(function(mutations, observer) {
 		var e = mutations[0].target;		
